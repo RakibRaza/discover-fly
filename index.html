@@ -73,6 +73,8 @@
               type="number"
               name=""
               value="0"
+              min="0"
+              onchange="calculateTotal()"
             />
           </div>
           <div class="plus-minus-btn">
@@ -98,6 +100,8 @@
               type="number"
               name=""
               value="0"
+              min="0"
+              onchange="calculateTotal()"
             />
           </div>
           <div class="plus-minus-btn">
@@ -143,8 +147,44 @@
             </div>
           </div>
         </div>
-        <button class="book-now-btn">Book Now</button>
+        <button onclick="displayModal()" class="book-now-btn">Book Now</button>
       </div>
+      <!-- modal -->
+      <div id="modal" class="modal">
+        <div class="modal-content animate">
+          <div class="close-btn">
+            <span
+              onclick="document.getElementById('modal').style.display='none'"
+              class="close"
+              >&times;</span
+            >
+          </div>
+
+          <div class="confirm">
+            <h3>Your Total Ticket :- <span id="total-ticket"></span></h3>
+            <h3>Your Total Bill :- $<span id="total-bill"></span></h3>
+            <h2>Please, Confirm you booking, for fly with us.</h2>
+          </div>
+
+          <div class="btn-container">
+            <button
+              type="button"
+              onclick="document.getElementById('modal').style.display='none'"
+              class="confirm-btn"
+            >
+              Confirm
+            </button>
+            <button
+              type="button"
+              onclick="document.getElementById('modal').style.display='none'"
+              class="cancel-btn"
+            >
+              Cancle
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- modal end -->
       <!-- right side -->
       <div class="booking-content">
         <h1>
@@ -161,48 +201,6 @@
     </main>
 
     <!--main script-->
-    <script>
-      // ticket count increase or decrease
-      function handleTicketChange(ticketClass, isIncrease) {
-        let ticketCount = getInputValue(ticketClass);
-
-        if (isIncrease) {
-          ticketCount++;
-        }
-        if (!isIncrease && ticketCount > 0) {
-          ticketCount--;
-        }
-
-        document.getElementById(
-          ticketClass + "-ticket-count"
-        ).value = ticketCount;
-
-        calculateTotal();
-      }
-
-      // calculate subTotal,vatAmount and totalAmount
-      function calculateTotal() {
-        const fClassTicket = getInputValue("f-class");
-        const economyTicket = getInputValue("economy");
-
-        const subTotal = fClassTicket * 150 + economyTicket * 100;
-        document.getElementById("sub-total").innerText = subTotal;
-
-        const vatAmount = subTotal * 0.1;
-        document.getElementById("vat-amount").innerText = vatAmount;
-
-        const totalAmount = subTotal + vatAmount;
-        document.getElementById("total-amount").innerText = totalAmount;
-      }
-
-      // get ticket count from input
-      function getInputValue(ticketClass) {
-        const ticketInput = document.getElementById(
-          ticketClass + "-ticket-count"
-        );
-        let ticketCount = parseInt(ticketInput.value);
-        return ticketCount;
-      }
-    </script>
+    <script src="./app.js"></script>
   </body>
 </html>

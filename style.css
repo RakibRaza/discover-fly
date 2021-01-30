@@ -71,7 +71,7 @@ a.active {
   color: #3352f2;
   font-size: 22px;
   padding: 2px;
-  margin-top: 10px;
+  margin-top: 25px;
   word-spacing: 20px;
 }
 .fas {
@@ -125,6 +125,7 @@ a.active {
   cursor: pointer;
   border: 2px solid #3352f2;
   transition: all 0.3s ease;
+  outline: none;
 }
 .book-now-btn:hover {
   background: transparent;
@@ -133,4 +134,98 @@ a.active {
 .amount {
   display: flex;
   justify-content: space-between;
+}
+
+/* modal css */
+.btn-container {
+  background: #f1f1f1;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 0 0 10px 10px;
+}
+.cancel-btn,
+.confirm-btn {
+  padding: 12px 25px;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s linear;
+}
+.confirm-btn {
+  border: 2px solid #3352f2;
+  color: #3352f2;
+}
+.confirm-btn:hover {
+  background: #3352f2;
+  color: #fff;
+}
+.cancel-btn {
+  border: 2px solid red;
+  color: red;
+}
+.cancel-btn:hover {
+  background: red;
+  color: #fff;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 60px;
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 10px;
+}
+.confirm {
+  padding: 40px 0;
+  text-align: center;
+}
+.confirm h3 {
+  margin: 18px 0;
+}
+/* Close Button */
+.close-btn {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover {
+  color: red;
+  cursor: pointer;
+}
+
+/* zoom animation */
+.animate {
+  animation: animatezoom 0.6s;
+}
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
